@@ -1,0 +1,24 @@
+# Generated configuration file
+TYPE=Ethernet
+ONBOOT=on
+{% if dhcp %}
+BOOTPROTO=dhcp
+{% else %}
+DEVICE={{ iface.name | cm("interface_name", "host") }}
+NM_CONTROLLER=no
+BOOTPROTO=none
+HWADDR={{ iface.mac | cm("interface_mac", "host") }}
+IPADDR={{ ipaddress | cm("interface_ip", "host") }}
+NETMASK={{ netmask | cm("interface_netmask", "host") }}
+{% endif %}
+
+# DNS configuration
+PEERDNS=no
+{% if iface.host.dns_client %}
+{% for server in iface.host.dns_client.settings.nameservers %}
+DNS{{ loop.index }}={{ server.host.ip | cm("dns server", "net" ) }}
+{% endfor %}
+{% else %}
+DNS1=8.8.8.8
+DNS2=8.8.4.4
+{% endif %}

@@ -1,0 +1,48 @@
+"""
+    Copyright 2013 KU Leuven Research and Development - iMinds - Distrinet
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+    Administrative Contact: dnet-project-office@cs.kuleuven.be
+    Technical Contact: bart.vanbrabant@cs.kuleuven.be
+"""
+
+implementation aliasImpl:
+    """
+        This module implements the configuration for network interfaces on rhel
+    """
+    iface_file = std::ConfigFile(host = iface.host, path = "/etc/sysconfig/network-scripts/ifcfg-{{ iface.name }}",
+        content = template("redhat/interface.tmpl"))
+    persist = std::ConfigFile(host = iface.host, path = "/etc/udev/rules.d/70-persistent-net-{{ iface.name }}.rules",
+        content = template("redhat/net_udev.tmpl"))
+end
+
+implementation ifaceImpl:
+    route_iface = std::ConfigFile(host = iface.host, path = "/etc/sysconfig/network-scripts/route-{{ iface.name }}",
+        content = template("redhat/route.tmpl"))
+end
+
+implementation config:
+    """
+        This is the configuration each redhat based operating system should have
+    """
+    network_file = std::ConfigFile(host = host, path = "/etc/sysconfig/network",
+        content = template("redhat/network.tmpl"))
+        
+    std::Service(host = host, name = "network", onboot = true, state = "running", requires = [network_file])
+end
+
+implement ip::Alias using aliasImpl when iface.host.os is "redhat"
+implement std::HostConfig using config when host.os is "redhat"
+implement net::Interface using ifaceImpl when host.os is "redhat"
+

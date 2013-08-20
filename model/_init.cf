@@ -1,0 +1,39 @@
+"""
+    Copyright 2013 KU Leuven Research and Development - iMinds - Distrinet
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+    Administrative Contact: dnet-project-office@cs.kuleuven.be
+    Technical Contact: bart.vanbrabant@cs.kuleuven.be
+"""
+
+# add redhat to the operating system enum
+enum std::os with parent "linux" as "redhat"
+enum std::os with parent "redhat" as "rhel", "fedora", "centos"
+
+enum std::os with parent "fedora" as "fedora-12"
+enum std::os with parent "fedora" as "fedora-13"
+enum std::os with parent "fedora" as "fedora-14"
+enum std::os with parent "fedora" as "fedora-15"
+enum std::os with parent "fedora" as "fedora-16"
+enum std::os with parent "fedora" as "fedora-17"
+enum std::os with parent "fedora" as "fedora-18"
+enum std::os with parent "fedora" as "fedora-19"
+
+enum std::os with parent "rhel" as "rhel-4"
+enum std::os with parent "rhel" as "rhel-5"
+enum std::os with parent "rhel" as "rhel-6"
+
+enum std::os with parent "centos" as "centos-4"
+enum std::os with parent "centos" as "centos-5"
+enum std::os with parent "centos" as "centos-6"
