@@ -38,7 +38,8 @@ implementation config:
     """
     network_file = std::ConfigFile(host = host, path = "/etc/sysconfig/network",
         content = template("redhat/network.tmpl"))
-        
+    hosts_file = std::ConfigFile(host = host, path = "/etc/hosts",
+        content = template("redhat/hosts.tmpl"))    
     std::Service(host = host, name = "network", onboot = true, state = "running", requires = [network_file])
 end
 
