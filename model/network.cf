@@ -17,7 +17,7 @@
     Technical Contact: bart.vanbrabant@cs.kuleuven.be
 """
 
-implementation aliasImpl:
+implementation aliasImpl for ip::Alias:
     """
         This module implements the configuration for network interfaces on rhel
     """
@@ -27,19 +27,17 @@ implementation aliasImpl:
         content = template("redhat/net_udev.tmpl"))
 end
 
-implementation ifaceImpl:
+implementation ifaceImpl for net::Interface:
     route_iface = std::ConfigFile(host = iface.host, path = "/etc/sysconfig/network-scripts/route-{{ iface.name }}",
         content = template("redhat/route.tmpl"))
 end
 
-implementation config:
+implementation config for std::HostConfig:
     """
         This is the configuration each redhat based operating system should have
     """
     network_file = std::ConfigFile(host = host, path = "/etc/sysconfig/network",
         content = template("redhat/network.tmpl"))
-    hosts_file = std::ConfigFile(host = host, path = "/etc/hosts",
-        content = template("redhat/hosts.tmpl"))    
     std::Service(host = host, name = "network", onboot = true, state = "running", requires = [network_file])
 end
 
