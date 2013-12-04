@@ -14,8 +14,8 @@ NETMASK={{ netmask | cm("interface_netmask", "host") }}
 
 # DNS configuration
 PEERDNS=no
-{% if iface.host.dns_client %}
-{% for server in iface.host.dns_client.settings.nameservers %}
+{% if iface.host.infrastructure %}
+{% for server in iface.host.infrastructure.nameservers %}
 DNS{{ loop.index }}={{ server.host.ip | cm("dns server", "net" ) }}
 {% endfor %}
 {% else %}
