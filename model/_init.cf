@@ -29,6 +29,7 @@ enum std::os with parent "fedora" as "fedora-16"
 enum std::os with parent "fedora" as "fedora-17"
 enum std::os with parent "fedora" as "fedora-18"
 enum std::os with parent "fedora" as "fedora-19"
+enum std::os with parent "fedora" as "fedora-20"
 
 enum std::os with parent "rhel" as "rhel-4"
 enum std::os with parent "rhel" as "rhel-5"
