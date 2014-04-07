@@ -17,6 +17,7 @@ PEERDNS=no
 {% if iface.host.infrastructure %}
 {% for server in iface.host.infrastructure.nameservers %}
 DNS{{ loop.index }}={{ server.host.ip | cm("dns server", "net" ) }}
+DNS2=8.8.8.8
 {% endfor %}
 {% else %}
 DNS1=8.8.8.8
