@@ -39,6 +39,8 @@ implementation config:
     network_file = std::ConfigFile(host = host, path = "/etc/sysconfig/network",
         content = template("redhat/network.tmpl"))
     std::Service(host = host, name = "network", onboot = true, state = "running", requires = [network_file])
+    
+    hostname_file = std::ConfigFile(host = host, path = "/etc/hostname", content = "{{ host.name }}")
 end
 
 implement ip::Alias using aliasImpl when iface.host.os is "redhat"
