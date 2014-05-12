@@ -28,7 +28,7 @@ implementation aliasImpl:
 end
 
 implementation ifaceImpl:
-    route_iface = std::ConfigFile(host = iface.host, path = "/etc/sysconfig/network-scripts/route-{{ iface.name }}",
+    route_iface = std::ConfigFile(host = host, path = "/etc/sysconfig/network-scripts/route-{{ name }}",
         content = template("redhat/route.tmpl"))
 end
 
