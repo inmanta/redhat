@@ -22,14 +22,14 @@ implementation aliasImpl:
         This module implements the configuration for network interfaces on rhel
     """
     iface_file = std::ConfigFile(host = iface.host, path = "/etc/sysconfig/network-scripts/ifcfg-{{ iface.name }}",
-        content = template("redhat/interface.tmpl"))
+        content = std::template("redhat/interface.tmpl"))
     persist = std::ConfigFile(host = iface.host, path = "/etc/udev/rules.d/70-persistent-net-{{ iface.name }}.rules",
-        content = template("redhat/net_udev.tmpl"))
+        content = std::template("redhat/net_udev.tmpl"))
 end
 
 implementation ifaceImpl:
     route_iface = std::ConfigFile(host = host, path = "/etc/sysconfig/network-scripts/route-{{ name }}",
-        content = template("redhat/route.tmpl"))
+        content = std::template("redhat/route.tmpl"))
 end
 
 implementation config:
@@ -37,7 +37,7 @@ implementation config:
         This is the configuration each redhat based operating system should have
     """
     network_file = std::ConfigFile(host = host, path = "/etc/sysconfig/network",
-        content = template("redhat/network.tmpl"))
+        content = std::template("redhat/network.tmpl"))
     std::Service(host = host, name = "network", onboot = true, state = "running", requires = [network_file])
     
     hostname_file = std::ConfigFile(host = host, path = "/etc/hostname", content = "{{ host.name }}")

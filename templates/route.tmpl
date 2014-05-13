@@ -1,5 +1,5 @@
 {% for route in routes %}# Route {{ loop.index0 }}
-ADDRESS{{ loop.index0 }}={{ route.network | cm("route_network", loop.index0, "net ref") }}
-NETMASK{{ loop.index0 }}={{ route.netmask | cm("route_network", loop.index0, "net ref") }}
-GATEWAY{{ loop.index0 }}={{ route.gateway | cm("route_network", loop.index0, "net ref") }}
+ADDRESS{{ loop.index0 }}={{ route.network | std.cm("route_network", loop.index0, "net ref") }}
+NETMASK{{ loop.index0 }}={{ route.netmask | std.cm("route_network", loop.index0, "net ref") }}
+GATEWAY{{ loop.index0 }}={{ route.gateway | std.cm("route_network", loop.index0, "net ref") }}
 {% endfor %}
