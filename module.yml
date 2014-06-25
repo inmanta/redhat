@@ -1,0 +1,9 @@
+name: redhat
+version: 0.1
+source: git@github.com:bartv/imp-redhat
+license: Apache 2.0
+author: Bart Vanbrabant <bart.vanbrabant@cs.kuleuven.be>
+requires:
+    net: git@github.com:bartv/imp-net, ">= 0.1"
+    ip: git@github.com:bartv/imp-ip, ">= 0.1"
+    std: git@github.com:bartv/imp-std, ">= 0.1"
