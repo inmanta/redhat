@@ -39,11 +39,11 @@ implementation config:
     network_file = std::ConfigFile(host = host, path = "/etc/sysconfig/network",
         content = std::template("redhat/network.tmpl"))
     std::Service(host = host, name = "network", onboot = true, state = "running", requires = [network_file])
-    
+
     hostname_file = std::ConfigFile(host = host, path = "/etc/hostname", content = "{{ host.name }}")
 end
 
-implement ip::Alias using aliasImpl when iface.host.os is "redhat"
-implement std::HostConfig using config when host.os is "redhat"
-implement net::Interface using ifaceImpl when host.os is "redhat"
+implement ip::Alias using aliasImpl when std::familyof(iface.host.os, "redhat")
+implement std::HostConfig using config when std::familyof(host.os, "redhat")
+implement net::Interface using ifaceImpl when std::familyof(host.os, "redhat")
 

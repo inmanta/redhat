@@ -18,23 +18,23 @@
 """
 
 # add redhat to the operating system enum
-enum std::os with parent "linux" as "redhat"
-enum std::os with parent "redhat" as "rhel", "fedora", "centos"
+redhat = std::OS(name = "redhat", family = std::unix)
+rhel = std::OS(name = "rhel", family = redhat)
 
-enum std::os with parent "fedora" as "fedora-12"
-enum std::os with parent "fedora" as "fedora-13"
-enum std::os with parent "fedora" as "fedora-14"
-enum std::os with parent "fedora" as "fedora-15"
-enum std::os with parent "fedora" as "fedora-16"
-enum std::os with parent "fedora" as "fedora-17"
-enum std::os with parent "fedora" as "fedora-18"
-enum std::os with parent "fedora" as "fedora-19"
-enum std::os with parent "fedora" as "fedora-20"
+rhel5 = std::OS(name = "rhel", version = 5, family = rhel)
+el5 = std::OS(name = "el", version = 5, family = rhel5)
+centos5 = std::OS(name = "centos", version = 5, family = rhel5)
 
-enum std::os with parent "rhel" as "rhel-4"
-enum std::os with parent "rhel" as "rhel-5"
-enum std::os with parent "rhel" as "rhel-6"
+rhel6 = std::OS(name = "rhel", version = 6, family = rhel)
+el6 = std::OS(name = "el", version = 6, family = rhel6)
+centos6 = std::OS(name = "centos", version = 6, family = rhel6)
 
-enum std::os with parent "centos" as "centos-4"
-enum std::os with parent "centos" as "centos-5"
-enum std::os with parent "centos" as "centos-6"
+rhel7 = std::OS(name = "rhel", version = 7, family = rhel)
+el7 = std::OS(name = "el", version = 7, family = rhel7)
+centos7 = std::OS(name = "centos", version = 7, family = rhel7)
+
+fedora = std::OS(name = "fedora", family = redhat)
+fedora18 = std::OS(name = "fedora", version = 18, family = fedora)
+fedora19 = std::OS(name = "fedora", version = 19, family = fedora)
+fedora20 = std::OS(name = "fedora", version = 20, family = fedora)
+fedora21 = std::OS(name = "fedora", version = 21, family = fedora)
