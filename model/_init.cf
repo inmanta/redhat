@@ -18,7 +18,7 @@
 """
 
 # add redhat to the operating system enum
-redhat = std::OS(name = "redhat", family = std::unix)
+redhat = std::OS(name = "redhat", family = std::linux)
 rhel = std::OS(name = "rhel", family = redhat)
 
 rhel5 = std::OS(name = "rhel", version = 5, family = rhel)
