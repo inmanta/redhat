@@ -4,19 +4,19 @@ ONBOOT=on
 {% if dhcp %}
 BOOTPROTO=dhcp
 {% else %}
-DEVICE={{ iface.name | std.cm("interface_name", "host") }}
+DEVICE={{ iface.name }}
 NM_CONTROLLER=no
 BOOTPROTO=none
-HWADDR={{ iface.mac | std.cm("interface_mac", "host") }}
-IPADDR={{ ipaddress | std.cm("interface_ip", "host") }}
-NETMASK={{ netmask | std.cm("interface_netmask", "host") }}
+HWADDR={{ iface.mac }}
+IPADDR={{ ipaddress }}
+NETMASK={{ netmask }}
 {% endif %}
 
 # DNS configuration
 PEERDNS=no
 {% if iface.host.infrastructure %}
 {% for server in iface.host.infrastructure.nameservers %}
-DNS{{ loop.index }}={{ server.host.ip | std.cm("dns server", "net" ) }}
+DNS{{ loop.index }}={{ server.host.ip }}
 DNS2=8.8.8.8
 {% endfor %}
 {% else %}
