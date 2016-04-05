@@ -1,9 +1,8 @@
-author: Bart Vanbrabant <bart@impera.io>
+author: Bart Vanbrabant <bart@inmanta.com>
 license: Apache 2.0
 name: redhat
-source: git@git.impera.io:modules/redhat
+source: git@git.inmanta.com:modules/redhat
 version: 0.2.6
 requires:
-    ip: git@git.impera.io:modules/ip, ">= 0.1"
-    net: git@git.impera.io:modules/net, ">= 0.1"
-    std: git@git.impera.io:modules/std, ">= 0.3"
+    ip: git@git.inmanta.com:modules/ip, master
+    net: git@git.inmanta.com:modules/net, master
