@@ -2,7 +2,7 @@ author: Bart Vanbrabant <bart@inmanta.com>
 license: Apache 2.0
 name: redhat
 source: git@git.inmanta.com:modules/redhat
-version: 0.2.6
+version: 0.2.7
 requires:
     ip: git@git.inmanta.com:modules/ip, master
     net: git@git.inmanta.com:modules/net, master
