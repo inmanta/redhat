@@ -13,11 +13,8 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 
-    Contact: bart@inmanta.com
+    Contact: code@inmanta.com
 """
-import ip
-import net
-
 # add redhat to the operating system enum
 redhat = std::OS(name = "redhat", family = std::linux)
 rhel = std::OS(name = "rhel", family = redhat)
