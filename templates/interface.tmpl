@@ -8,18 +8,9 @@ DEVICE={{ iface.name }}
 NM_CONTROLLER=no
 BOOTPROTO=none
 HWADDR={{ iface.mac }}
-IPADDR={{ ipaddress }}
+IPADDR={{ v4 }}
 NETMASK={{ netmask }}
 {% endif %}
 
 # DNS configuration
 PEERDNS=no
-{% if iface.host.infrastructure %}
-{% for server in iface.host.infrastructure.nameservers %}
-DNS{{ loop.index }}={{ server.host.ip }}
-DNS2=8.8.8.8
-{% endfor %}
-{% else %}
-DNS1=8.8.8.8
-DNS2=8.8.4.4
-{% endif %}

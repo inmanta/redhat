@@ -22,10 +22,12 @@ implementation aliasImpl for ip::Alias:
     """
         This module implements the configuration for network interfaces on rhel
     """
+    service = std::Service(host = iface.host, name="network",state="running",onboot=true)
     iface_file = std::ConfigFile(host = iface.host, path = "/etc/sysconfig/network-scripts/ifcfg-{{ iface.name }}",
-        content = std::template("redhat/interface.tmpl"))
+        content = std::template("redhat/interface.tmpl"), reload=true, provides = service)
     persist = std::ConfigFile(host = iface.host, path = "/etc/udev/rules.d/70-persistent-net-{{ iface.name }}.rules",
-        content = std::template("redhat/net_udev.tmpl"))
+        content = std::template("redhat/net_udev.tmpl"), reload=true, provides = service)
+    self.requires = [iface_file, persist]
 end
 
 implementation ifaceImpl for net::Interface:
