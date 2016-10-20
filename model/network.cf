@@ -24,10 +24,8 @@ implementation aliasImpl for ip::Alias:
     """
     service = std::Service(host = iface.host, name="network",state="running",onboot=true)
     iface_file = std::ConfigFile(host = iface.host, path = "/etc/sysconfig/network-scripts/ifcfg-{{ iface.name }}",
-        content = std::template("redhat/interface.tmpl"), reload=true, provides = service)
-    persist = std::ConfigFile(host = iface.host, path = "/etc/udev/rules.d/70-persistent-net-{{ iface.name }}.rules",
-        content = std::template("redhat/net_udev.tmpl"), reload=true, provides = service)
-    self.requires = [iface_file, persist]
+        content = std::template("redhat/interface.tmpl"), reload=true, provides=service)
+    self.requires = [iface_file]
 end
 
 implementation ifaceImpl for net::Interface:

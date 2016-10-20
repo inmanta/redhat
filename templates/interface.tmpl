@@ -1,13 +1,13 @@
 # Generated configuration file
 TYPE=Ethernet
 ONBOOT=on
+{% if iface.mac != "" %}HWADDR={{ iface.mac }}{%- endif %}
 {% if dhcp %}
 BOOTPROTO=dhcp
 {% else %}
 DEVICE={{ iface.name }}
 NM_CONTROLLER=no
 BOOTPROTO=none
-HWADDR={{ iface.mac }}
 IPADDR={{ v4 }}
 NETMASK={{ netmask }}
 {% endif %}
