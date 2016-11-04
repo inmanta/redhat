@@ -22,9 +22,9 @@ implementation aliasImpl for ip::Alias:
     """
         This module implements the configuration for network interfaces on rhel
     """
-    service = std::Service(host = iface.host, name="network",state="running",onboot=true)
-    iface_file = std::ConfigFile(host = iface.host, path = "/etc/sysconfig/network-scripts/ifcfg-{{ iface.name }}",
-        content = std::template("redhat/interface.tmpl"), reload=true, provides=service)
+    service = std::Service(host=iface.host, name="network", state="running", onboot=true)
+    iface_file = std::ConfigFile(host=iface.host, path="/etc/sysconfig/network-scripts/ifcfg-{{ iface.name }}",
+                                 content=std::template("redhat/interface.tmpl"), reload=true, provides=service)
     self.requires = [iface_file]
 end
 
@@ -37,9 +37,8 @@ implementation config for std::HostConfig:
     """
         This is the configuration each redhat based operating system should have
     """
-    network_file = std::ConfigFile(host = host, path = "/etc/sysconfig/network",
-        content = std::template("redhat/network.tmpl"))
-    std::Service(host = host, name = "network", onboot = true, state = "running", requires = [network_file])
+    network_file = std::ConfigFile(host=host, path="/etc/sysconfig/network", content=std::template("redhat/network.tmpl"))
+    std::Service(host=host, name="network", onboot=true, state="running", requires=[network_file])
 
     hostname_file = std::ConfigFile(host = host, path = "/etc/hostname", content = "{{ host.name }}")
 end
