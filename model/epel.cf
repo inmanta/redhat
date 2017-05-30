@@ -17,7 +17,7 @@
 """
 
 implementation epel7 for std::HostConfig:
-    std::Package(host=host, name="centos-release-scl", state="installed")
+    std::Package(host=host, name="epel-release", state="installed")
 end
 
 implement std::HostConfig using epel7 when (std::familyof(host.os, "rhel") and host.os.version >= 7) 
