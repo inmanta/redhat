@@ -1,7 +1,4 @@
 author: Inmanta <code@inmanta.com>
 license: Apache 2.0
 name: redhat
-version: 0.6.2
-requires:
-- ip
-- net
+version: 0.7.0
