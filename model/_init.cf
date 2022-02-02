@@ -32,7 +32,8 @@ el7 = std::OS(name="el", version=7, family=rhel7)
 centos7 = std::OS(name="centos", version=7, family=rhel7)
 
 rhel8 = std::OS(name="rhel", version=8, family=rhel, python_cmd="python3")
-centos8 = std::OS(name="centos", version=8, family=rhel7, python_cmd="python3")
+centos8 = std::OS(name="centos", version=8, family=rhel8, python_cmd="python3")
+rocky8 = std::OS(name="rocky linux", version=8, family=rhel8, python_cmd="python3")
 
 fedora = std::OS(name="fedora", family=redhat)
 fedora18 = std::OS(name="fedora", version=18, family=fedora)
