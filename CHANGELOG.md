@@ -1,3 +1,6 @@
+# 0.9.7
+- Use conditional requirement for inmanta-dev-dependencies package
+
 # 0.9.5
 - Added Rocky Linux 8
 
