@@ -1,3 +1,6 @@
+# 0.9.11
+- Remove pytest.ini and move its logic to pyproject.toml
+
 # 0.9.10
 - Fix rocky linux remote agents
 
