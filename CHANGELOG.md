@@ -1,3 +1,6 @@
+# 0.9.10
+- Fix rocky linux remote agents
+
 # 0.9.9
 - Add pytest.ini file and set asyncio_mode to auto
 
