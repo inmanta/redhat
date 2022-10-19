@@ -35,6 +35,10 @@ rhel8 = std::OS(name="rhel", version=8, family=rhel, python_cmd="python3")
 centos8 = std::OS(name="centos", version=8, family=rhel8, python_cmd="python3")
 rocky8 = std::OS(name="rocky linux", version=8, family=rhel8, python_cmd="/usr/libexec/platform-python")
 
+rhel9 = std::OS(name="rhel", version=9, family=rhel, python_cmd="python3")
+centos9 = std::OS(name="centos", version=9, family=rhel9, python_cmd="python3")
+rocky9 = std::OS(name="rocky linux", version=9, family=rhel9, python_cmd="/usr/libexec/platform-python")
+
 fedora = std::OS(name="fedora", family=redhat)
 fedora18 = std::OS(name="fedora", version=18, family=fedora)
 fedora19 = std::OS(name="fedora", version=19, family=fedora)

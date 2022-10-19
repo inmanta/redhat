@@ -1,3 +1,7 @@
+# 1.0.0
+- Add RHEL 9
+- Remove unused network config and repo setup
+
 # 0.9.11
 - Remove pytest.ini and move its logic to pyproject.toml
 
